@@ -1,0 +1,34 @@
+import ca.nathan.demo.model.Facts;
+import ca.nathan.demo.model.Results;
+import java.util.*;
+
+global ca.nathan.demo.model.Results results;
+dialect  "mvel"
+
+rule "PHM_IS_ADULT"
+    when
+        Facts(phmAge >= 18)
+    then
+        results.ruleCode.add("PHM_IS_ADULT")
+end
+
+rule "OLD"
+    when
+        Facts(phmAge >= 50 || (maritalStatus == 'SINGLE' && maritalStatus == 'MARRIED'))
+    then
+        results.ruleCode.add("OLD")
+end
+
+rule "SHM_IS_ADULT"
+    when
+        Facts(shmAge >= 18)
+    then
+        results.ruleCode.add("SHM_IS_ADULT")
+end
+
+rule "RICH_AF"
+    when
+        Facts((phmAssets + shmAssets) >= 1000)
+    then
+        results.ruleCode.add("RICH_AF")
+end

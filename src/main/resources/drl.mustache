@@ -1,0 +1,16 @@
+import ca.nathan.demo.model.Facts;
+import ca.nathan.demo.model.Results;
+import java.util.*;
+
+global ca.nathan.demo.model.Results results;
+dialect "mvel"
+
+{{#rules}}
+rule "{{code}}"
+    when
+        Facts({{&spel}})
+    then
+        results.ruleCode.add("{{code}}")
+end
+{{/rules}}
+

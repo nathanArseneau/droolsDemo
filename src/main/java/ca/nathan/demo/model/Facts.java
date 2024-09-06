@@ -1,7 +1,8 @@
 package ca.nathan.demo.model;
 
-import lombok.Getter;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class Facts {
@@ -12,4 +13,6 @@ public class Facts {
     public int shmAssets;
 
     public String maritalStatus;
+
+    public Date date;
 }

@@ -9,6 +9,7 @@ dialect "mvel"
 rule "{{code}}"
     when
         Facts({{&spel}})
+        Facts(date.before(new Date()))
     then
         results.ruleCode.add("{{code}}")
 end
